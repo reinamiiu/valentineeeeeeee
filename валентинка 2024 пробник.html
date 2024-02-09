@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>подарочек тебе</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="main">
+          <center> <img> <img src="cattik.jpg"
+          width="310"
+          height="350" </center>
+            <div> <class="text">
+              <h1 class="hh" id="name">привет !</h1>
+              <p class="pp" id="question">ты будешь моей валентинкой ? </p>
+            </div>
+            <div class="buttons">
+                <button class="button no" id="no-button" onclick="showMessage('No')">Нет</button>
+                <button class="button yes"  onclick="showMessage('Yes')" id="yesButton">Да</button>
+            </div>
+        </div>
+    </div>
+    <script>
+      
+        let imageReplaced = false;
+
+      const button = document.getElementById('no-button');
+
+      
+      button.addEventListener('mouseenter', function() {
+          showMessage('No')
+      });
+
+      function showMessage(response) {
+
+
+if (response === "No") {
+
+    const noButton = document.getElementById("no-button");
+    const container = document.querySelector(".container");
+    const maxWidth = window.innerWidth - noButton.offsetWidth;
+    const maxHeight = window.innerHeight - noButton.offsetHeight;
+
+    noButton.style.position = "absolute";
+
+    const newImage = document.createElement("img");
+       newImage.src = "zloykat.jpg";
+       newImage.width = 310;
+       newImage.height = 350;
+       container.appendChild(newImage);
+    imageReplaced = true;
+
+    const randomX = Math.max(0, Math.floor(Math.random() * maxWidth));
+    const randomY = Math.max(0, Math.floor(Math.random() * maxHeight));
+
+    noButton.style.left = randomX + "px";
+    noButton.style.top = randomY + "px";
+
+    document.getElementById("question").textContent =
+      "так не пойдёт, подумай хорошенько";
+    document.getElementById("name").style.display = "none";
+
+
+  }
+
+  if (response === "Yes") {
+    document.getElementById("name").remove();
+    document.getElementById("no-button").remove();
+
+    const yesMessage = document.getElementById("question");
+    yesMessage.textContent = "моё ж ты солнышко, люблю тебя тём 😘";
+    yesMessage.style.display = "block";
+    yesMessage.style.fontStyle = "normal";
+
+    const newImage = document.createElement("img");
+       newImage.src = "smiley.jpg";
+       newImage.width = 310;
+       newImage.height = 350;
+       container.appendChild(newImage);
+    imageReplaced = true;
+
+    document.getElementById("yesButton").remove();
+  }
+}
+    </script>
+</body>
+
+</html>
+
